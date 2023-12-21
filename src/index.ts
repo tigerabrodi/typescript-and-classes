@@ -42,3 +42,61 @@ class Circle {
   readonly pi: number = 3.14 // readonly properties must be initialized at their declaration or in the constructor.
   constructor(public radius: number) {}
 }
+
+/** Dog */
+class Dog extends Animal {
+  constructor(species: string, age: number, public breed: string) {
+    super(species, age) // TypeScript supports classical inheritance like other object-oriented languages.
+  }
+}
+
+/** Shape */
+abstract class Shape {
+  abstract getArea(): number // abstract methods must be implemented in the derived classes
+}
+
+class Rectangle extends Shape {
+  constructor(private width: number, private height: number) {
+    super()
+  }
+
+  getArea(): number {
+    return this.width * this.height
+  }
+}
+
+/** IShape */
+interface IShape {
+  // Interfaces are a way to define contracts within your code as well as contracts with code outside of your project.
+  getArea(): number
+}
+
+class SecondCircle implements IShape {
+  constructor(private radius: number) {}
+
+  getArea(): number {
+    return Math.PI * this.radius * this.radius
+  }
+}
+
+/** Generics */
+class DataStorage<T> {
+  private data: T[] = []
+
+  addItem(item: T) {
+    this.data.push(item)
+  }
+
+  removeItem(item: T) {
+    this.data = this.data.filter((d) => d !== item)
+  }
+}
+
+/** Static */
+class MathUtil {
+  static pi: number = 3.14159 // These belong to the class itself, not to instances of the class.
+
+  static calculateCircumference(diameter: number): number {
+    return this.pi * diameter
+  }
+}
