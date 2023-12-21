@@ -36,3 +36,9 @@ class Animal {
     return `${this.species} is ${this.age} years old.`
   }
 }
+
+/** Circle */
+class Circle {
+  readonly pi: number = 3.14 // readonly properties must be initialized at their declaration or in the constructor.
+  constructor(public radius: number) {}
+}
